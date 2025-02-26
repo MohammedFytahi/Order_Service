@@ -1,10 +1,6 @@
 spring:
   application:
     name: order-service
-  datasource:
-    url: jdbc:postgresql://localhost:5432/orderdb
-    username: postgres
-    password: 2001
   jpa:
     hibernate:
       ddl-auto: update
@@ -12,21 +8,13 @@ spring:
     config:
       enabled: false
     discovery:
-      enabled: true
+      enabled: false
   kafka:
-    bootstrap-servers: localhost:9092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-
 server:
-  port: 8081  # Change to 8081 or another free port
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-
+  port: 8081
 management:
   endpoints:
     web:
@@ -35,7 +23,6 @@ management:
   tracing:
     sampling:
       probability: 1.0
-
 resilience4j:
   circuitbreaker:
     instances:
